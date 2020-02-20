@@ -19,12 +19,12 @@ extents = Vector3( 10, 0.1, 7.5 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 6
 friction = 1.0
 bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="PitchMesh" type="MeshInstance" parent="." index="0"]
 
