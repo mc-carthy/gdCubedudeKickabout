@@ -4,8 +4,12 @@ var motion = Vector3()
 
 export var speed = 10
 
+const UP = Vector3(0, 1, 0)
+const GRAVITY = -5
+
 func _physics_process(delta):
 	move()
+	fall()
 
 func move():
 	var dx = 0
@@ -23,4 +27,8 @@ func move():
 	motion.x = dx
 	motion.z = dz
 	
-	move_and_slide(motion, Vector3(0, 1, 0))
+	move_and_slide(motion, UP)
+
+func fall():
+	if not is_on_floor():
+		motion.y = GRAVITY
