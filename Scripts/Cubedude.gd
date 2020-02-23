@@ -3,6 +3,7 @@ extends KinematicBody
 var motion = Vector3()
 
 export var speed = 10
+export var player_id = 1
 
 const UP = Vector3(0, 1, 0)
 const GRAVITY = -5
@@ -20,13 +21,13 @@ func move():
 	var dx = 0
 	var dz = 0
 	
-	if Input.is_action_pressed('ui_up'):
+	if Input.is_action_pressed('up_%s' % player_id):
 		dz -= 1
-	if Input.is_action_pressed('ui_down'):
+	if Input.is_action_pressed('down_%s' % player_id):
 		dz += 1
-	if Input.is_action_pressed('ui_right'):
+	if Input.is_action_pressed('right_%s' % player_id):
 		dx += 1
-	if Input.is_action_pressed('ui_left'):
+	if Input.is_action_pressed('left_%s' % player_id):
 		dx -= 1
 	
 	motion.x = dx
