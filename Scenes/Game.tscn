@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Pitch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Cubedude.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Models/Goal/GoalBlue.material" type="Material" id=5]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+[ext_resource path="res://Scenes/Cubedude.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Models/Goal/GoalBlue.material" type="Material" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -30,7 +31,7 @@ subdivide_depth = 0
 
 points = PoolVector3Array( -1, 3, 8, 1, 3, -8, 1, 3, 8, -1, 3, -8, -1, -3, 8, 1, -3, -8, 1, -3, 8, -1, -3, -8, 1, 3, 8, -1, 3, -8, 1, 3, -8, -1, 3, 8, 1, -3, 8, -1, -3, -8, 1, -3, -8, -1, -3, 8, 1, 3, 8, -1, -3, 8, -1, 3, 8, 1, -3, 8, 1, 3, -8, -1, -3, -8, -1, 3, -8, 1, -3, -8 )
 
-[node name="Game" type="Spatial" index="0"]
+[node name="Game" type="Spatial"]
 
 [node name="Pitch" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -44,7 +45,7 @@ mass = 0.5
 transform = Transform( 1, 0, 0, 0, 0.809049, 0.58774, 0, -0.58774, 0.809049, 0.0449429, 6.65183, 11.613 )
 keep_aspect = 1
 cull_mask = 1048575
-environment = null
+environment = ExtResource( 3 )
 h_offset = 0.0
 v_offset = 0.0
 doppler_tracking = 0
@@ -58,7 +59,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Players" type="Node" parent="." index="3"]
 
-[node name="Player1" parent="Players" index="0" instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="Player1" parent="Players" index="0" instance=ExtResource( 4 )]
 
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, -7.5, 0, 0 )
 _sections_unfolded = [ "Axis Lock", "Collision", "Transform" ]
@@ -67,7 +70,7 @@ _sections_unfolded = [ "Axis Lock", "Collision", "Transform" ]
 
 editor/display_folded = true
 
-[node name="Goal1" parent="Goals" index="0" instance=ExtResource( 4 )]
+[node name="Goal1" parent="Goals" index="0" instance=ExtResource( 5 )]
 
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, -9.4, 0, -0.225 )
 _sections_unfolded = [ "Collision", "Transform" ]
@@ -75,15 +78,17 @@ _sections_unfolded = [ "Collision", "Transform" ]
 [node name="Goal" parent="Goals/Goal1" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-material/0 = ExtResource( 5 )
+material/0 = ExtResource( 6 )
 _sections_unfolded = [ "material" ]
 
-[node name="Goal2" parent="Goals" index="1" instance=ExtResource( 4 )]
+[node name="Goal2" parent="Goals" index="1" instance=ExtResource( 5 )]
 
 transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 9.15, 0, -0.225 )
 _sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="Boundaries" type="Node" parent="." index="5"]
+
+editor/display_folded = true
 
 [node name="FarWall" type="MeshInstance" parent="Boundaries" index="0"]
 
@@ -372,6 +377,36 @@ _sections_unfolded = [ "Collision" ]
 
 shape = SubResource( 4 )
 disabled = false
+
+[node name="Lights" type="Node" parent="." index="6"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Lights" index="0"]
+
+transform = Transform( 0.654188, 0.469295, -0.593128, 0.076589, 0.73908, 0.669249, 0.752444, -0.483242, 0.447555, -15.3693, 15.0179, 10.7535 )
+layers = 1
+light_color = Color( 1, 0.936279, 0.71875, 1 )
+light_energy = 1.0
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0.0615234, 0, 0.28125, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light", "Shadow" ]
 
 
 [editable path="Goals/Goal1"]
