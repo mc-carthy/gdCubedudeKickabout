@@ -21,18 +21,19 @@ func move():
 	var dz = 0
 	
 	if Input.is_action_pressed('ui_up'):
-		dz -= speed
+		dz -= 1
 	if Input.is_action_pressed('ui_down'):
-		dz += speed
+		dz += 1
 	if Input.is_action_pressed('ui_right'):
-		dx += speed
+		dx += 1
 	if Input.is_action_pressed('ui_left'):
-		dx -= speed
+		dx -= 1
 	
 	motion.x = dx
 	motion.z = dz
 	
-	move_and_slide(motion, UP)
+	
+	move_and_slide(motion.normalized() * speed, UP)
 
 func fall():
 	if not is_on_floor():
@@ -49,4 +50,4 @@ func animate():
 
 func face_forward():
 	if not motion.x == 0 or not motion.z == 0:
-		look_at(Vector3(-motion.x, 0, -motion.z), UP)
+		look_at(Vector3(-motion.x, 0, -motion.z) * speed, UP)
