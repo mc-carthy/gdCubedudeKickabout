@@ -31,7 +31,7 @@ subdivide_depth = 0
 
 points = PoolVector3Array( -1, 3, 8, 1, 3, -8, 1, 3, 8, -1, 3, -8, -1, -3, 8, 1, -3, -8, 1, -3, 8, -1, -3, -8, 1, 3, 8, -1, 3, -8, 1, 3, -8, -1, 3, 8, 1, -3, 8, -1, -3, -8, 1, -3, -8, -1, -3, 8, 1, 3, 8, -1, -3, 8, -1, 3, 8, 1, -3, 8, 1, 3, -8, -1, -3, -8, -1, 3, -8, 1, -3, -8 )
 
-[node name="Game" type="Spatial"]
+[node name="Game" type="Spatial" index="0"]
 
 [node name="Pitch" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -42,7 +42,7 @@ mass = 0.5
 
 [node name="Camera" type="Camera" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 0.809049, 0.58774, 0, -0.58774, 0.809049, 0.0449429, 6.65183, 11.613 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 10, 10 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = ExtResource( 3 )
