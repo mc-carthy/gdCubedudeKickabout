@@ -13,6 +13,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	move()
+	face_forward()
 	fall()
 
 func move():
@@ -45,3 +46,7 @@ func animate():
 			$AnimationPlayer.play("Arms Cross Walk")
 	else:
 		$AnimationPlayer.stop()
+
+func face_forward():
+	if not motion.x == 0 or not motion.z == 0:
+		look_at(Vector3(-motion.x, 0, -motion.z), UP)
