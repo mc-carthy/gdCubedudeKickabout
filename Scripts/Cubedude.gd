@@ -1,6 +1,7 @@
 extends KinematicBody
 
 var motion = Vector3()
+var can_move = true
 
 export var speed = 10
 export var player_id = 1
@@ -10,11 +11,13 @@ const GRAVITY = -5
 const EPSILON = 0.000000000001
 
 func _process(delta):
-	animate()
+	if can_move:
+		animate()
+	face_forward()
 
 func _physics_process(delta):
-	move()
-	face_forward()
+	if can_move:
+		move()
 	fall()
 
 func move():
@@ -52,3 +55,6 @@ func animate():
 func face_forward():
 	if not motion.x == 0 or not motion.z == 0:
 		look_at(Vector3(-motion.x, 0, -motion.z) * speed, UP)
+
+func can_move(boolean):
+	can_move = boolean

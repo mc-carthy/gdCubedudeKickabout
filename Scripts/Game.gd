@@ -10,5 +10,6 @@ func _on_GoalDetection_body_entered(body, player_scored_id):
 	Ball.axis_lock_linear_x = true
 	Ball.axis_lock_linear_y = true
 	Ball.axis_lock_linear_z = true
+	get_tree().call_group("player", "can_move", false)
 	print("Player " + str(player_scored_id) + " has scored")
 	
