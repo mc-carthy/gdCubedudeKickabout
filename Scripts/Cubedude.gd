@@ -20,6 +20,11 @@ func _physics_process(delta):
 		move()
 	fall()
 
+func reset():
+	var spawn_point = get_tree().get_root().find_node(("Player%sSpawn" % player_id), true, false)
+	translation = spawn_point.translation
+	can_move(true)
+
 func move():
 	var dx = 0
 	var dz = 0
