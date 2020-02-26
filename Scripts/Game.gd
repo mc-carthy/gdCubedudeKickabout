@@ -44,12 +44,12 @@ func update_score(player_id):
 		new_score = Player2_score
 
 	$GUI.update_score(new_score, player_id)
-	check_game_over(new_score)
+	check_game_over(new_score, player_id)
 
-func check_game_over(score):
+func check_game_over(score, player_id):
 	if score >= max_score:
 		$Timer.queue_free()
-		$GUI.game_over()
+		$GUI.game_over(player_id)
 
 func restart_game():
 	get_tree().reload_current_scene()
