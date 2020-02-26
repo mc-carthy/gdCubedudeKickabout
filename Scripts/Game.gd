@@ -4,7 +4,7 @@ onready var Ball = get_tree().get_root().find_node("Ball", true, false)
 
 var Player1_score = 0
 var Player2_score = 0
-export var max_score = 5
+export var max_score = 2
 
 func _ready():
 	reset_pitch()
@@ -47,3 +47,9 @@ func update_score(player_id):
 	check_game_over(new_score)
 
 func check_game_over(score):
+	if score >= max_score:
+		$Timer.queue_free()
+		$GUI.game_over()
+
+func restart_game():
+	get_tree().reload_current_scene()
